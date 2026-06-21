@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аромат — VIOLETTE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">VIOLETTE<span>.</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="catalog.html?cat=Восточные">Коллекции</a>
+        <a href="index.html#about">О бренде</a>
+        <a href="index.html#contacts">Контакты</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Поиск">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Корзина">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu">
+    <button class="close" aria-label="Закрыть">×</button>
+    <a href="index.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="catalog.html?cat=Восточные">Коллекции</a>
+    <a href="index.html#about">О бренде</a>
+    <a href="cart.html">Корзина</a>
+  </div>
+
+  <main class="section" style="padding-top:48px">
+    <div class="container">
+      <div class="breadcrumb" style="font-size:.85rem;color:var(--muted);margin-bottom:30px">
+        <a href="index.html" style="color:var(--violet-600)">Главная</a> /
+        <a href="catalog.html" style="color:var(--violet-600)">Каталог</a> /
+        <span id="bc-name">Аромат</span>
+      </div>
+      <div class="pd" id="pd"></div>
+    </div>
+  </main>
+
+  <!-- Related -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Вам также понравится</span>
+        <h2>Похожие ароматы</h2>
+      </div>
+      <div class="products" id="related-grid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="logo">VIOLETTE<span>.</span></a>
+          <p>Нишевая парфюмерия класса люкс. Авторские ароматы из редчайших ингредиентов мира.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Магазин</h5>
+          <a href="catalog.html">Все ароматы</a>
+          <a href="catalog.html?cat=Цветочные">Для неё</a>
+          <a href="catalog.html?cat=Древесные">Для него</a>
+        </div>
+        <div class="footer-col">
+          <h5>Помощь</h5>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Возврат</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h5>Контакты</h5>
+          <a href="tel:+78001234567">8 800 123-45-67</a>
+          <a href="mailto:hello@violette.ru">hello@violette.ru</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 VIOLETTE. Все права защищены.</span>
+        <span>Политика конфиденциальности · Договор оферты</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    let current = { ml: 50, qty: 1 };
+
+    function renderProduct(p) {
+      document.title = `${p.name} — VIOLETTE`;
+      document.getElementById("bc-name").textContent = p.name;
+
+      const priceNow = Cart.priceFor(p, current.ml);
+      const oldNow = p.old ? p.old * (SIZES.find((s) => s.ml === current.ml).factor) : null;
+
+      document.getElementById("pd").innerHTML = `
+        <div class="pd-gallery">
+          <div class="pd-main">
+            <span class="badge ${p.badgeGold ? "gold" : ""}">${p.badge}</span>
+            <img class="pd-img" src="${productImg(p)}" alt="${p.name}" />
+          </div>
+          <div class="pd-thumbs">
+            ${[0, 1, 2, 3].map((i) => `
+              <div class="pd-thumb ${i === 0 ? "active" : ""}" style="background-image:url('${productImg(p)}')" onclick="thumbSelect(this)"></div>
+            `).join("")}
+          </div>
+        </div>
+        <div class="pd-info">
+          <span class="card-cat">${p.family} · ${p.gender}</span>
+          <h1>${p.name}</h1>
+          <div class="pd-rating">
+            <span class="stars">${stars(p.rating)}</span>
+            <span style="color:var(--muted);font-size:.9rem">${p.rating} · ${p.reviews} отзывов</span>
+          </div>
+          <div class="pd-price" id="pd-price">${fmt(priceNow)}${oldNow ? `<small>${fmt(oldNow)}</small>` : ""}</div>
+          <p class="pd-desc">${p.desc}</p>
+          <div class="pd-notes">
+            <div class="note-box"><span class="nl">Верхние ноты</span><span class="nv">${p.top}</span></div>
+            <div class="note-box"><span class="nl">Сердце</span><span class="nv">${p.heart}</span></div>
+            <div class="note-box"><span class="nl">База</span><span class="nv">${p.base}</span></div>
+          </div>
+          <div class="pd-size">
+            <h4>Объём</h4>
+            <div class="size-opts" id="size-opts">
+              ${SIZES.map((s) => `
+                <button class="size-opt ${s.ml === current.ml ? "active" : ""}" data-ml="${s.ml}" onclick="sizeSelect(${s.ml})">${s.ml} мл</button>
+              `).join("")}
+            </div>
+          </div>
+          <div class="pd-buy">
+            <div class="qty">
+              <button onclick="changeQty(-1)">−</button>
+              <input type="text" id="qty-input" value="1" readonly />
+              <button onclick="changeQty(1)">+</button>
+            </div>
+            <button class="btn btn-primary" style="flex:1" onclick="addToCart('${p.id}')">Добавить в корзину</button>
+            <button class="add-btn" style="width:52px;height:52px" onclick="this.classList.toggle('active')" aria-label="В избранное">♥</button>
+          </div>
+          <div class="pd-meta">
+            <div><span>Артикул:</span> <b>${p.id.toUpperCase()}</b></div>
+            <div><span>Наличие:</span> <b style="color:var(--violet-600)">В наличии</b></div>
+            <div><span>Доставка:</span> <b>1–2 дня, бесплатно от 7 000 ₽</b></div>
+          </div>
+        </div>`;
+    }
+
+    function thumbSelect(el) {
+      document.querySelectorAll(".pd-thumb").forEach((t) => t.classList.remove("active"));
+      el.classList.add("active");
+    }
+
+    function sizeSelect(ml) {
+      current.ml = ml;
+      document.querySelectorAll(".size-opt").forEach((b) =>
+        b.classList.toggle("active", Number(b.dataset.ml) === ml)
+      );
+      const p = window.__product;
+      const priceNow = Cart.priceFor(p, ml);
+      const factor = SIZES.find((s) => s.ml === ml).factor;
+      const oldNow = p.old ? p.old * factor : null;
+      document.getElementById("pd-price").innerHTML =
+        `${fmt(priceNow)}${oldNow ? `<small>${fmt(oldNow)}</small>` : ""}`;
+    }
+
+    function changeQty(d) {
+      current.qty = Math.max(1, current.qty + d);
+      document.getElementById("qty-input").value = current.qty;
+    }
+
+    function addToCart(id) {
+      Cart.add(id, current.qty, current.ml);
+      toast(`«${getProduct(id).name}» (${current.ml} мл) добавлен в корзину`);
+    }
+
+    function pageInit() {
+      const id = new URLSearchParams(location.search).get("id");
+      const p = getProduct(id) || PRODUCTS[0];
+      window.__product = p;
+      renderProduct(p);
+
+      const related = PRODUCTS.filter((r) => r.family === p.family && r.id !== p.id).slice(0, 4);
+      const fill = related.length ? related : PRODUCTS.filter((r) => r.id !== p.id).slice(0, 4);
+      document.getElementById("related-grid").innerHTML = fill.map(cardHTML).join("");
+      initReveal();
+    }
+  </script>
+</body>
+</html>

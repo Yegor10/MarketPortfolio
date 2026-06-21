@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIOLETTE — Нишевая парфюмерия класса люкс</title>
+  <meta name="description" content="VIOLETTE — изысканный онлайн-бутик нишевой парфюмерии. Авторские ароматы, премиальные ингредиенты, доставка по всему миру." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">VIOLETTE<span>.</span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="catalog.html?cat=Восточные">Коллекции</a>
+        <a href="#about">О бренде</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Поиск">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Корзина">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu">
+    <button class="close" aria-label="Закрыть">×</button>
+    <a href="index.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="catalog.html?cat=Восточные">Коллекции</a>
+    <a href="#about">О бренде</a>
+    <a href="cart.html">Корзина</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow">Нишевая парфюмерия класса люкс</span>
+        <h1>Аромат, который <em>рассказывает</em> вашу историю</h1>
+        <p>Авторские композиции из редчайших ингредиентов мира. Найдите парфюм, который станет вашей второй натурой.</p>
+        <div class="hero-actions">
+          <a href="catalog.html" class="btn btn-primary">Открыть каталог →</a>
+          <a href="#bestsellers" class="btn btn-light">Бестселлеры</a>
+        </div>
+        <div class="hero-stats">
+          <div><span class="num">120+</span><span class="lbl">ароматов</span></div>
+          <div><span class="num">50k</span><span class="lbl">клиентов</span></div>
+          <div><span class="num">4.9★</span><span class="lbl">рейтинг</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-bottle">
+          <img src="images/noir-velours.png" alt="Noir Velours" />
+        </div>
+        <div class="hero-tag t1"><b>Уд · Роза</b>Восточный аккорд</div>
+        <div class="hero-tag t2"><b>До 18 часов</b>стойкость шлейфа</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Бесплатная доставка от 7 000 ₽</span>
+      <span>Пробник в подарок</span>
+      <span>Оригинальная продукция</span>
+      <span>Подарочная упаковка</span>
+      <span>Бесплатная доставка от 7 000 ₽</span>
+      <span>Пробник в подарок</span>
+      <span>Оригинальная продукция</span>
+      <span>Подарочная упаковка</span>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="container">
+      <div class="features">
+        <div class="feature reveal">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M5 12l4-4m-4 4 4 4"/><path d="M12 3v.01"/><rect x="3" y="3" width="18" height="18" rx="3" opacity=".25"/></svg></div>
+          <h4>Доставка за 1 день</h4>
+          <p>Бесплатно от 7 000 ₽ по всей стране, курьером в руки.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 8 8 8 8s8-3 8-8V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h4>100% оригинал</h4>
+          <p>Прямые поставки. Сертификат подлинности в каждой посылке.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M8 8V5a4 4 0 0 1 8 0v3"/></svg></div>
+          <h4>Подарок к заказу</h4>
+          <p>Фирменный пробник и упаковка-люкс в подарок.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.38 8.38 0 0 1-9-8.5A8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5Z"/><path d="M8 12h8"/></svg></div>
+          <h4>Поддержка 24/7</h4>
+          <p>Парфюмер-консультант поможет подобрать ваш аромат.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Подберите по настроению</span>
+        <h2>Ольфакторные семейства</h2>
+        <p>От тёплых восточных шлейфов до невесомых цветочных вуалей.</p>
+      </div>
+      <div class="cats">
+        <a class="cat reveal" href="catalog.html?cat=Восточные">
+          <span class="arrow">→</span>
+          <div><h3>Восточные</h3><span>Уд · Амбра · Специи</span></div>
+        </a>
+        <a class="cat reveal" href="catalog.html?cat=Цветочные">
+          <span class="arrow">→</span>
+          <div><h3>Цветочные</h3><span>Роза · Жасмин · Ирис</span></div>
+        </a>
+        <a class="cat reveal" href="catalog.html?cat=Древесные">
+          <span class="arrow">→</span>
+          <div><h3>Древесные</h3><span>Кедр · Сандал · Ветивер</span></div>
+        </a>
+        <a class="cat reveal" href="catalog.html?cat=Гурманские">
+          <span class="arrow">→</span>
+          <div><h3>Гурманские</h3><span>Ваниль · Карамель</span></div>
+        </a>
+        <a class="cat reveal" href="catalog.html?cat=Свежие">
+          <span class="arrow">→</span>
+          <div><h3>Свежие</h3><span>Мускус · Цитрус</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="section" id="bestsellers" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Выбор клиентов</span>
+        <h2>Бестселлеры месяца</h2>
+        <p>Ароматы, в которые влюбляются с первого вдоха.</p>
+      </div>
+      <div class="products" id="bestsellers-grid"></div>
+      <div style="text-align:center; margin-top:48px" class="reveal">
+        <a href="catalog.html" class="btn btn-ghost">Смотреть все ароматы →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo banner -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="banner reveal">
+        <div>
+          <span class="eyebrow" style="color:var(--gold-soft)">Лимитированная коллекция</span>
+          <h2>Midnight Collection<br>−25% до конца недели</h2>
+          <p>Глубокие вечерние ароматы в подарочном оформлении. Успейте до завершения акции.</p>
+          <a href="catalog.html" class="btn btn-light">Перейти к коллекции →</a>
+        </div>
+        <div class="countdown" id="countdown">
+          <div class="cd-box"><span class="n" data-cd="d">02</span><span class="l">дня</span></div>
+          <div class="cd-box"><span class="n" data-cd="h">14</span><span class="l">часов</span></div>
+          <div class="cd-box"><span class="n" data-cd="m">36</span><span class="l">минут</span></div>
+          <div class="cd-box"><span class="n" data-cd="s">09</span><span class="l">секунд</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">О бренде</span>
+        <h2>Искусство, заключённое во флакон</h2>
+        <p>VIOLETTE — это союз французской парфюмерной школы и редчайших натуральных ингредиентов. Каждый аромат создаётся вручную мастерами-парфюмерами малыми партиями, чтобы сохранить характер и душу композиции.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Отзывы</span>
+        <h2>Что говорят клиенты</h2>
+      </div>
+      <div class="reviews">
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>«Noir Velours — это любовь. Стойкость невероятная, шлейф держится весь день, а комплименты не прекращаются.»</p>
+          <div class="reviewer"><div class="av">А</div><div><b>Анна К.</b><span>Москва</span></div></div>
+        </div>
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>«Заказывал Oud Impérial в подарок — упаковка просто роскошная. Сервис и доставка на высшем уровне.»</p>
+          <div class="reviewer"><div class="av">Д</div><div><b>Дмитрий В.</b><span>Санкт-Петербург</span></div></div>
+        </div>
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>«Консультант помог подобрать аромат по описанию — попал прямо в сердце. Violette Royale теперь мой фаворит!»</p>
+          <div class="reviewer"><div class="av">М</div><div><b>Мария Л.</b><span>Казань</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section" id="contacts" style="padding-top:0">
+    <div class="container">
+      <div class="newsletter reveal">
+        <span class="eyebrow">Закрытый клуб VIOLETTE</span>
+        <h2>−15% на первый заказ</h2>
+        <p>Подпишитесь и первыми узнавайте о новинках, закрытых распродажах и лимитированных коллекциях.</p>
+        <form class="subscribe" onsubmit="event.preventDefault(); this.reset(); toast('Спасибо! Промокод отправлен на почту ✦');">
+          <input type="email" placeholder="Ваш e-mail" required />
+          <button class="btn btn-primary" type="submit">Подписаться</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="logo">VIOLETTE<span>.</span></a>
+          <p>Нишевая парфюмерия класса люкс. Авторские ароматы из редчайших ингредиентов мира.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+            <a href="#" aria-label="Telegram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></a>
+            <a href="#" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-3-1-3-5-3-7a6 6 0 1 1 6 6c-1.5 0-2-1-2-1"/><path d="m12 12-2 6"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Магазин</h5>
+          <a href="catalog.html">Все ароматы</a>
+          <a href="catalog.html?cat=Цветочные">Для неё</a>
+          <a href="catalog.html?cat=Древесные">Для него</a>
+          <a href="catalog.html">Унисекс</a>
+          <a href="catalog.html">Новинки</a>
+        </div>
+        <div class="footer-col">
+          <h5>Помощь</h5>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Возврат</a>
+          <a href="#">Как подобрать аромат</a>
+          <a href="#">Часто задаваемые вопросы</a>
+        </div>
+        <div class="footer-col">
+          <h5>Контакты</h5>
+          <a href="tel:+78001234567">8 800 123-45-67</a>
+          <a href="mailto:hello@violette.ru">hello@violette.ru</a>
+          <a href="#">Москва, ул. Тверская, 12</a>
+          <a href="#">Ежедневно 10:00 — 22:00</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 VIOLETTE. Все права защищены.</span>
+        <span>Политика конфиденциальности · Договор оферты</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function pageInit() {
+      const best = PRODUCTS.filter((p) => ["Бестселлер", "Хит", "Премиум"].includes(p.badge)).slice(0, 8);
+      document.getElementById("bestsellers-grid").innerHTML = best.map(cardHTML).join("");
+      initReveal();
+
+      // Countdown
+      const target = new Date().getTime() + (2 * 86400 + 14 * 3600 + 36 * 60) * 1000;
+      const cd = document.getElementById("countdown");
+      function tick() {
+        let diff = Math.max(0, target - Date.now());
+        const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+        const h = Math.floor(diff / 3600000); diff -= h * 3600000;
+        const m = Math.floor(diff / 60000); diff -= m * 60000;
+        const s = Math.floor(diff / 1000);
+        const pad = (n) => String(n).padStart(2, "0");
+        cd.querySelector('[data-cd="d"]').textContent = pad(d);
+        cd.querySelector('[data-cd="h"]').textContent = pad(h);
+        cd.querySelector('[data-cd="m"]').textContent = pad(m);
+        cd.querySelector('[data-cd="s"]').textContent = pad(s);
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Корзина — VIOLETTE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">VIOLETTE<span>.</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="catalog.html?cat=Восточные">Коллекции</a>
+        <a href="index.html#about">О бренде</a>
+        <a href="index.html#contacts">Контакты</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Поиск">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Корзина">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu">
+    <button class="close" aria-label="Закрыть">×</button>
+    <a href="index.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="catalog.html?cat=Восточные">Коллекции</a>
+    <a href="index.html#about">О бренде</a>
+    <a href="cart.html">Корзина</a>
+  </div>
+
+  <section class="page-hero" style="padding:54px 0 60px">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Главная</a> / Корзина</div>
+      <h1>Ваша корзина</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div id="cart-root"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="logo">VIOLETTE<span>.</span></a>
+          <p>Нишевая парфюмерия класса люкс. Авторские ароматы из редчайших ингредиентов мира.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Магазин</h5>
+          <a href="catalog.html">Все ароматы</a>
+          <a href="catalog.html?cat=Цветочные">Для неё</a>
+          <a href="catalog.html?cat=Древесные">Для него</a>
+        </div>
+        <div class="footer-col">
+          <h5>Помощь</h5>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Возврат</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h5>Контакты</h5>
+          <a href="tel:+78001234567">8 800 123-45-67</a>
+          <a href="mailto:hello@violette.ru">hello@violette.ru</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 VIOLETTE. Все права защищены.</span>
+        <span>Политика конфиденциальности · Договор оферты</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    let promoApplied = false;
+    const FREE_SHIP = 7000;
+    const SHIP_COST = 490;
+
+    function renderCart() {
+      const items = Cart.get();
+      const root = document.getElementById("cart-root");
+
+      if (!items.length) {
+        root.innerHTML = `
+          <div class="cart-empty">
+            <div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <h3>Корзина пуста</h3>
+            <p>Самое время выбрать аромат, который станет вашим фаворитом.</p>
+            <a href="catalog.html" class="btn btn-primary">Перейти в каталог →</a>
+          </div>`;
+        return;
+      }
+
+      const rows = items.map((i) => {
+        const p = getProduct(i.id);
+        const price = Cart.priceFor(p, i.ml);
+        return `
+          <div class="cart-item">
+            <a class="ci-media" href="product.html?id=${p.id}">
+              <img class="ci-img" src="${productImg(p)}" alt="${p.name}" loading="lazy" />
+            </a>
+            <div class="ci-info">
+              <span class="card-cat">${p.family}</span>
+              <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
+              <div class="ci-size">Объём: ${i.ml} мл · ${fmt(price)} / шт</div>
+              <button class="ci-remove" onclick="removeItem('${i.id}', ${i.ml})">✕ Удалить</button>
+            </div>
+            <div class="ci-right">
+              <div class="qty small">
+                <button onclick="setQty('${i.id}', ${i.ml}, ${i.qty - 1})">−</button>
+                <input type="text" value="${i.qty}" readonly />
+                <button onclick="setQty('${i.id}', ${i.ml}, ${i.qty + 1})">+</button>
+              </div>
+              <div class="ci-price">${fmt(price * i.qty)}</div>
+            </div>
+          </div>`;
+      }).join("");
+
+      const subtotal = Cart.subtotal();
+      const discount = promoApplied ? subtotal * 0.15 : 0;
+      const afterDiscount = subtotal - discount;
+      const shipping = afterDiscount >= FREE_SHIP ? 0 : SHIP_COST;
+      const total = afterDiscount + shipping;
+
+      root.innerHTML = `
+        <div class="cart-layout">
+          <div class="cart-items">${rows}</div>
+          <aside class="summary">
+            <h3>Итого</h3>
+            <div class="sum-row"><span>Товары (${Cart.count()})</span><b>${fmt(subtotal)}</b></div>
+            ${promoApplied ? `<div class="sum-row" style="color:var(--violet-600)"><span>Промокод VIOLETTE15</span><b>−${fmt(discount)}</b></div>` : ""}
+            <div class="sum-row"><span>Доставка</span><b>${shipping === 0 ? "Бесплатно" : fmt(shipping)}</b></div>
+            <div class="promo">
+              <input type="text" id="promo" placeholder="Промокод" value="${promoApplied ? "VIOLETTE15" : ""}" />
+              <button onclick="applyPromo()">ОК</button>
+            </div>
+            <div class="sum-row total"><span>К оплате</span><span class="price">${fmt(total)}</span></div>
+            <button class="btn btn-primary btn-block" style="margin-top:18px" onclick="checkout()">Оформить заказ</button>
+            <a href="catalog.html" class="btn btn-ghost btn-block" style="margin-top:12px">Продолжить покупки</a>
+            <p style="font-size:.8rem;color:var(--muted);text-align:center;margin-top:16px">Подсказка: промокод <b>VIOLETTE15</b> — скидка 15%</p>
+          </aside>
+        </div>`;
+    }
+
+    function removeItem(id, ml) {
+      Cart.remove(id, ml);
+      renderCart();
+      toast("Товар удалён из корзины");
+    }
+
+    function setQty(id, ml, qty) {
+      if (qty < 1) { removeItem(id, ml); return; }
+      Cart.setQty(id, ml, qty);
+      renderCart();
+    }
+
+    function applyPromo() {
+      const val = (document.getElementById("promo").value || "").trim().toUpperCase();
+      if (val === "VIOLETTE15") {
+        promoApplied = true;
+        toast("Промокод применён — скидка 15% ✦");
+      } else {
+        promoApplied = false;
+        toast("Промокод недействителен");
+      }
+      renderCart();
+    }
+
+    function checkout() {
+      Cart.save([]);
+      promoApplied = false;
+      renderCart();
+      toast("Заказ оформлен! Спасибо за покупку ✦");
+    }
+
+    function pageInit() {
+      renderCart();
+    }
+  </script>
+</body>
+</html>

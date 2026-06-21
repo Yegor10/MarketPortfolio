@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Каталог ароматов — VIOLETTE</title>
+  <meta name="description" content="Каталог нишевой парфюмерии VIOLETTE. Фильтруйте по семейству, полу и цене, чтобы найти идеальный аромат." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">VIOLETTE<span>.</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html" class="active">Каталог</a>
+        <a href="catalog.html?cat=Восточные">Коллекции</a>
+        <a href="index.html#about">О бренде</a>
+        <a href="index.html#contacts">Контакты</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Поиск">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Корзина">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu">
+    <button class="close" aria-label="Закрыть">×</button>
+    <a href="index.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="catalog.html?cat=Восточные">Коллекции</a>
+    <a href="index.html#about">О бренде</a>
+    <a href="cart.html">Корзина</a>
+  </div>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Главная</a> / Каталог</div>
+      <h1>Каталог ароматов</h1>
+      <p>120+ авторских композиций. Найдите тот, что станет вашей подписью.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="catalog">
+        <aside class="filters">
+          <div class="filter-group">
+            <h4>Семейство</h4>
+            <div class="chip-list" data-filter="family">
+              <button class="chip active" data-val="all">Все</button>
+              <button class="chip" data-val="Восточные">Восточные</button>
+              <button class="chip" data-val="Цветочные">Цветочные</button>
+              <button class="chip" data-val="Древесные">Древесные</button>
+              <button class="chip" data-val="Гурманские">Гурманские</button>
+              <button class="chip" data-val="Свежие">Свежие</button>
+              <button class="chip" data-val="Пудровые">Пудровые</button>
+              <button class="chip" data-val="Ароматические">Ароматические</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Для кого</h4>
+            <div class="chip-list" data-filter="gender">
+              <button class="chip active" data-val="all">Все</button>
+              <button class="chip" data-val="Женский">Женский</button>
+              <button class="chip" data-val="Мужской">Мужской</button>
+              <button class="chip" data-val="Унисекс">Унисекс</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Цена</h4>
+            <div class="chip-list" data-filter="price">
+              <button class="chip active" data-val="all">Любая</button>
+              <button class="chip" data-val="0-8000">до 8 000 ₽</button>
+              <button class="chip" data-val="8000-12000">8–12 тыс ₽</button>
+              <button class="chip" data-val="12000-99999">от 12 000 ₽</button>
+            </div>
+          </div>
+        </aside>
+
+        <div>
+          <div class="catalog-top">
+            <span class="count"><b id="result-count">0</b> ароматов</span>
+            <select class="select" id="sort">
+              <option value="popular">По популярности</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="rating">По рейтингу</option>
+              <option value="new">Новинки</option>
+            </select>
+          </div>
+          <div class="products" id="catalog-grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="logo">VIOLETTE<span>.</span></a>
+          <p>Нишевая парфюмерия класса люкс. Авторские ароматы из редчайших ингредиентов мира.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+            <a href="#" aria-label="Telegram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Магазин</h5>
+          <a href="catalog.html">Все ароматы</a>
+          <a href="catalog.html?cat=Цветочные">Для неё</a>
+          <a href="catalog.html?cat=Древесные">Для него</a>
+        </div>
+        <div class="footer-col">
+          <h5>Помощь</h5>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Возврат</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h5>Контакты</h5>
+          <a href="tel:+78001234567">8 800 123-45-67</a>
+          <a href="mailto:hello@violette.ru">hello@violette.ru</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 VIOLETTE. Все права защищены.</span>
+        <span>Политика конфиденциальности · Договор оферты</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const state = { family: "all", gender: "all", price: "all", sort: "popular" };
+
+    function applyFilters() {
+      let list = PRODUCTS.filter((p) => {
+        if (state.family !== "all" && p.family !== state.family) return false;
+        if (state.gender !== "all" && p.gender !== state.gender) return false;
+        if (state.price !== "all") {
+          const [min, max] = state.price.split("-").map(Number);
+          if (p.price < min || p.price > max) return false;
+        }
+        return true;
+      });
+
+      switch (state.sort) {
+        case "price-asc": list.sort((a, b) => a.price - b.price); break;
+        case "price-desc": list.sort((a, b) => b.price - a.price); break;
+        case "rating": list.sort((a, b) => b.rating - a.rating); break;
+        case "new": list.sort((a, b) => (b.badge === "Новинка") - (a.badge === "Новинка")); break;
+        default: list.sort((a, b) => b.reviews - a.reviews);
+      }
+
+      const grid = document.getElementById("catalog-grid");
+      document.getElementById("result-count").textContent = list.length;
+      grid.innerHTML = list.length
+        ? list.map(cardHTML).join("")
+        : `<div class="empty"><h3>Ничего не найдено</h3><p>Попробуйте изменить параметры фильтра.</p></div>`;
+      initReveal();
+    }
+
+    function pageInit() {
+      // Apply ?cat= from URL
+      const params = new URLSearchParams(location.search);
+      const cat = params.get("cat");
+      if (cat) {
+        state.family = cat;
+        document.querySelectorAll('[data-filter="family"] .chip').forEach((c) => {
+          c.classList.toggle("active", c.dataset.val === cat);
+        });
+      }
+
+      document.querySelectorAll(".chip-list").forEach((group) => {
+        const key = group.dataset.filter;
+        group.addEventListener("click", (e) => {
+          const chip = e.target.closest(".chip");
+          if (!chip) return;
+          group.querySelectorAll(".chip").forEach((c) => c.classList.remove("active"));
+          chip.classList.add("active");
+          state[key] = chip.dataset.val;
+          applyFilters();
+        });
+      });
+
+      document.getElementById("sort").addEventListener("change", (e) => {
+        state.sort = e.target.value;
+        applyFilters();
+      });
+
+      applyFilters();
+    }
+  </script>
+</body>
+</html>
